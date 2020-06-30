@@ -11,3 +11,13 @@ services:
       - "./rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins"
       - "./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro"
       - "./rabbitmq/erlang.cookie:/var/lib/rabbitmq/mnesia/.erlang.cookie"
+
+  consumer: 
+    build: ./rabbitmq-consumer
+    depends_on: 
+      - rabbitmq
+
+  producer: 
+    build: ./rabbitmq-producer
+    depends_on: 
+      - rabbitmq

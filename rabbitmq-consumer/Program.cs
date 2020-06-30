@@ -2,14 +2,16 @@
 using RabbitMQ.Client.Events;
 using System;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace rabbitmq_consumer
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            var factory = new ConnectionFactory() { HostName = "127.0.0.1", UserName = "rabbitmq", Password = "rabbitmq" };
+            var factory = new ConnectionFactory() { HostName = "rabbitmq", UserName = "rabbitmq", Password = "rabbitmq" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
@@ -30,8 +32,8 @@ namespace rabbitmq_consumer
                                      autoAck: true,
                                      consumer: consumer);
 
-                Console.WriteLine(" Press [enter] to exit.");
-                Console.ReadLine();
+                // Wait indefinitely
+                await Task.Delay(Timeout.Infinite);
             }
         }
     }

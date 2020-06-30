@@ -16,7 +16,7 @@ namespace rabbitmq_producer
                     Console.WriteLine("[x] Waiting {0} seconds...", 10);
                     await Task.Delay(TimeSpan.FromSeconds(10));
 
-                    var factory = new ConnectionFactory() { HostName = "127.0.0.1", UserName = "rabbitmq", Password = "rabbitmq" };
+                    var factory = new ConnectionFactory() { HostName = "rabbitmq", UserName = "rabbitmq", Password = "rabbitmq" };
                     using (var connection = factory.CreateConnection())
                     using (var channel = connection.CreateModel())
                     {
