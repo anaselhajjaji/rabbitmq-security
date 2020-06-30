@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "rabbitmq-consumer": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
