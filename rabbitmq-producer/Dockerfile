@@ -17,4 +17,5 @@ RUN dotnet publish "rabbitmq-producer.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
 ENTRYPOINT ["dotnet", "rabbitmq-producer.dll"]

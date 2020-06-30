@@ -5,21 +5,26 @@ services:
   rabbitmq:
     image: "rabbitmq:3.8.5-management-alpine"
     ports:
-      #- "15672:15672"
+      - "15672:15672"
       #- "5672:5672"
       - "5671:5671"
     volumes:
       - "./rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins"
-      - "./rabbitmq/certs/:/etc/rabbitmq/certs/"
+      - "./certificates/rootca/:/etc/rabbitmq/certs/rootca/"
+      - "./certificates/rabbitmq/:/etc/rabbitmq/certs/rabbitmq/"
       - "./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro"
       - "./rabbitmq/erlang.cookie:/var/lib/rabbitmq/mnesia/.erlang.cookie"
 
   consumer: 
     build: ./rabbitmq-consumer
+    volumes:
+      - "./certificates/rootca/rootCA.crt:/usr/local/share/certificates/rootCA.crt"
     depends_on: 
       - rabbitmq
 
   producer: 
     build: ./rabbitmq-producer
+    volumes:
+      - "./certificates/rootca/rootCA.crt:/usr/local/share/certificates/rootCA.crt"
     depends_on: 
       - rabbitmq
