@@ -11,7 +11,13 @@ namespace rabbitmq_consumer
     {
         static async Task Main(string[] args)
         {
-            var factory = new ConnectionFactory() { HostName = "rabbitmq", UserName = "rabbitmq", Password = "rabbitmq" };
+            var factory = new ConnectionFactory() { HostName = "rabbitmq", Port = 5671, UserName = "rabbitmq", Password = "rabbitmq" };
+            factory.Ssl.Enabled = true;
+            factory.Ssl.ServerName = "rabbitmq";
+            factory.Ssl.CertPath = "consumer.p12";
+            factory.Ssl.CertPassphrase = "Besiege27pin67stoic";
+            factory.Ssl.CertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true; // TODO, to be implemented.
+
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {

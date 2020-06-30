@@ -15,3 +15,18 @@ and use the login
 username: rabbitmq
 password: rabbitmq
 ```
+
+## Mutual authentication
+
+Certificates organization.
+
+                   [rootca]
+                       |
+                       |
+                   _______________
+                  /\              \
+                 /  \              \
+                /    \              \
+               /      \              \
+              /        \              \
+        [rabbitmq]    [producer]    [consumer]

@@ -13,4 +13,10 @@
     <PackageReference Include="RabbitMQ.Client" Version="6.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="consumer.p12">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -16,7 +16,13 @@ namespace rabbitmq_producer
                     Console.WriteLine("[x] Waiting {0} seconds...", 10);
                     await Task.Delay(TimeSpan.FromSeconds(10));
 
-                    var factory = new ConnectionFactory() { HostName = "rabbitmq", UserName = "rabbitmq", Password = "rabbitmq" };
+                    var factory = new ConnectionFactory() { HostName = "rabbitmq", Port = 5671, UserName = "rabbitmq", Password = "rabbitmq" };
+                    factory.Ssl.Enabled = true;
+                    factory.Ssl.ServerName = "rabbitmq";
+                    factory.Ssl.CertPath = "producer.p12";
+                    factory.Ssl.CertPassphrase = "Besiege27pin67stoic";
+                    factory.Ssl.CertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true; // TODO, to be implemented.
+
                     using (var connection = factory.CreateConnection())
                     using (var channel = connection.CreateModel())
                     {
