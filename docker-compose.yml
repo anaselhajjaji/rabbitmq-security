@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  
+  rabbitmq:
+    image: "rabbitmq:3.8.5-management-alpine"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - "./rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins"
+      - "./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro"
+      - "./rabbitmq/erlang.cookie:/var/lib/rabbitmq/mnesia/.erlang.cookie"
