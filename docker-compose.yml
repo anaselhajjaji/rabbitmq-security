@@ -19,6 +19,7 @@ services:
     build: ./rabbitmq-consumer
     volumes:
       - "./certificates/rootca/rootCA.crt:/usr/local/share/certificates/rootCA.crt"
+      - "./certificates/consumer/consumer.p12:/app/consumer.p12"
     depends_on: 
       - rabbitmq
 
@@ -26,5 +27,6 @@ services:
     build: ./rabbitmq-producer
     volumes:
       - "./certificates/rootca/rootCA.crt:/usr/local/share/certificates/rootCA.crt"
+      - "./certificates/producer/producer.p12:/app/producer.p12"
     depends_on: 
       - rabbitmq
