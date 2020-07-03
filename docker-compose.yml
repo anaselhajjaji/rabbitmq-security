@@ -20,6 +20,7 @@ services:
     volumes:
       - "./certificates/rootca/rootCA.crt:/usr/local/share/certificates/rootCA.crt"
       - "./certificates/consumer/consumer.p12:/app/consumer.p12"
+      - "./certificates/rootca/rootCA.crt:/app/rootCA.crt"
     depends_on: 
       - rabbitmq
 
@@ -28,5 +29,6 @@ services:
     volumes:
       - "./certificates/rootca/rootCA.crt:/usr/local/share/certificates/rootCA.crt"
       - "./certificates/producer/producer.p12:/app/producer.p12"
+      - "./certificates/rootca/rootCA.crt:/app/rootCA.crt"
     depends_on: 
       - rabbitmq
