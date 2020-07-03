@@ -17,7 +17,8 @@ namespace rabbitmq_consumer
             {
                 try
                 {
-                    var factory = new ConnectionFactory() { HostName = "rabbitmq", Port = 5671, UserName = "rabbitmq", Password = "rabbitmq" };
+                    var factory = new ConnectionFactory() { HostName = "rabbitmq", Port = 5671 };
+                    factory.AuthMechanisms.Add(new ExternalMechanismFactory());
                     factory.Ssl.Enabled = true;
                     factory.Ssl.ServerName = "rabbitmq";
                     factory.Ssl.CertPath = "consumer.p12";

@@ -1,0 +1,56 @@
+{
+    "rabbit_version": "3.8.5",
+    "users": [
+        {
+            "name": "rabbitmq",
+            "password_hash": "45trHasft1ZHc/uZDWS9ne5djBRmmyzlG5BR4t6gDjIThbeaP6nnOH4THlAnJYk4qZYQgKyqW8UDwmBCyMqpL9pSnLc=",
+            "hashing_algorithm": "rabbit_password_hashing_sha512",
+            "tags": "administrator"
+        },
+        {
+            "name": "consumer",
+            "password_hash": "45trHasft1ZHc/uZDWS9ne5djBRmmyzlG5BR4t6gDjIThbeaP6nnOH4THlAnJYk4qZYQgKyqW8UDwmBCyMqpL9pSnLc=",
+            "hashing_algorithm": "rabbit_password_hashing_sha512",
+            "tags": "consumer"
+        },
+        {
+            "name": "producer",
+            "password_hash": "45trHasft1ZHc/uZDWS9ne5djBRmmyzlG5BR4t6gDjIThbeaP6nnOH4THlAnJYk4qZYQgKyqW8UDwmBCyMqpL9pSnLc=",
+            "hashing_algorithm": "rabbit_password_hashing_sha512",
+            "tags": "producer"
+        }
+    ],
+    "vhosts": [
+        {
+            "vhost": "/"
+        }
+    ],
+    "permissions": [
+        {
+            "user": "consumer",
+            "vhost": "/",
+            "configure": "",
+            "write": ".*",
+            "read": ".*"
+        },
+        {
+            "user": "producer",
+            "vhost": "/",
+            "configure": "",
+            "write": ".*",
+            "read": ".*"
+        },
+        {
+            "user": "rabbitmq",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        }
+    ],
+    "parameters": [],
+    "policies": [],
+    "queues": [],
+    "exchanges": [],
+    "bindings": []
+}

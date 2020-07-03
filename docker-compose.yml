@@ -13,6 +13,7 @@ services:
       - "./certificates/rootca/:/etc/rabbitmq/certs/rootca/"
       - "./certificates/rabbitmq/:/etc/rabbitmq/certs/rabbitmq/"
       - "./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro"
+      - "./rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro"
       - "./rabbitmq/erlang.cookie:/var/lib/rabbitmq/mnesia/.erlang.cookie"
 
   consumer: 
